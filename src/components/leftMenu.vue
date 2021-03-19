@@ -1,112 +1,40 @@
 <template>
-	<div>
-		<div id="leftMenu">
-			<ul id="side-nav">	
-				<li><router-link to="/contentLegal">Legal Reference</router-link></li>
-				<li><router-link to="/contentShipment">Shipment Roles</router-link></li>
-				<li><router-link to="/contentBasic">Basic Information</router-link></li>
-				<li><router-link to="/contentAddress">Address</router-link></li>
-				<li><router-link to="/contentContract">Contract Person</router-link></li>
-				<li><router-link to="/contentSegment">Segment</router-link></li>
-				<li><router-link to="/contentNotifica">Notification</router-link></li>
-			</ul>
-		</div>
-		<!-- 路由匹配到的组件将显示在这里 -->
-		<transition :name="transitionName">
-			<keep-alive>
-				<router-view></router-view>
-			</keep-alive>
-		</transition>
-</div>
+  <div id="leftMenu">
+    <el-card class="box-card" shadow="never">
+      <div slot="header" class="clearfix">
+        <span>信息介绍</span>
+      </div>
+       <div class="content">
+         基于计算机网络技术与信息安全专业的“协同育人、专本一体化”教学资源库（简称“专本一体化”教学资源库）建设方案是以广东省教育厅
+         《关于2016年开展高职院校与本科高校协同育人试点工作的通知》（粤教高函〔2016〕84号）为背景、以广东理工职业学院“专本一体化应
+         用型人才培养试点项目”为依托，借助互联网技术与云计算技术，把职业信息、行业标准、课程标准、课程、教学视频、实训材料规范化为标准化的学习文件、
+         为广大的教师、学生、企业用户创建一个共享性的学习平台，以此来提高教学质量，满足当今社会对于职业教育的需要，也是实现教育强国的一个重要举措。
+       </div>
+    </el-card>
+  </div>
 </template>
 <script>
-	export default{
-		name:'leftMenu',
-		data(){
-			return{
-				tabPosition:'left',	
-			};
-		},
-		methods:{
-		},
-		// 使用watch监听$router的变化
-		watch:{
-			$route(to,from){
-				if(to.meta.index > from.meta.index){
-	    		//设置动画名称
-        	this.transitionName = 'slide-down';
-				}
-				else{
-					this.transitionName ='slide-up';
-				}
-			}
-		}
-	};
+export default {
+  name: 'leftMenu',
+  data () {
+    return {
+      tabPosition: 'left'
+    }
+  },
+  methods: {}
+}
 </script>
-<style scoped lang="less">
-.slide-up-enter-active, 
-.slide-up-leave-active, 
-.slide-down-enter-active, 
-.slide-down-leave-active { 
-	will-change: transform; 
-	transition: all 1100ms; 
-	position: absolute; 
-	} 
-	.slide-up-enter { 
-		opacity: 0; 
-		transform: translate3d(0, -40%,0); 
-	} 
-	.slide-up-leave-active { 
-		opacity: 0; transform: translate3d(0, 40%,0); 
-	} 
-	.slide-down-enter { 
-		opacity: 0; 
-		transform: translate3d(0,40% ,0); 
-	} 
-	.slide-down-leave-active{ 
-		opacity: 0; 
-		transform: translate3d(0, -40%,0); 
-	}
-	#leftMenu{
-		position:absolute;
-		left:50px;
-		top:100px;
-		color:#000;
-		ul{
-			li{
-				font-size: 18px;
-				font-weight: bold;
-				letter-spacing: 1px;
-				text-align: right;
-				padding-bottom:28px;
-				list-style: none;
-				cursor: pointer;
-				a:-webkit-any-link{
-					text-decoration: none;
-					color: #797a7b;
-					position:relative;
-				}
-				a:-webkit-any-link:hover::after{
-					position:absolute;
-					top:10px;
-					left:-15px;
-					content:'';
-					border:3px solid #161A1D;
-					border-radius:3px;
-				}
-				.router-link-active,a:-webkit-any-link:hover{
-					color:#000!important;
-					font-weight:bolder;
-				}
-				.router-link-active::after{
-					position:absolute;
-					top:10px;
-					left:-15px;
-					content:'';
-					border:3px solid #161A1D;
-					border-radius:3px;
-				}
-			}
-		}
-	}
+<style>
+#leftMenu{
+  width: 400px;
+  margin-right: 10px;
+}
+#leftMenu .clearfix{
+  color: #fff
+}
+.el-card .el-card__header {
+  background: #489bdd;
+  padding: 8px;
+}
+
 </style>
